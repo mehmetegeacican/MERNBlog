@@ -1,5 +1,5 @@
 const express = require('express');
-
+const Blogs = require("../models/blogModel");
 const router = express.Router();
 
 
@@ -24,12 +24,21 @@ router.get("/:id",(req,res) => {
  * POST REQUEST
  * POSTS A NEW BLOG
  */
-router.post("/",(req,res) => {
-    res.json({message : "POST REQUEST"})
+router.post("/", async (req,res) => {
+    const {title,description,body} = req.body;
+    console.log(title,description,body);
+    try{
+        const blogM = await Blogs.create({title,description,body});
+        console.log(blogM);
+        res.status(200).json(blogM);
+    }
+    catch(err){
+        res.status(400).json({error : error.message})
+    }
 })
 /**
  * blogRoutes
- * POST REQUEST
+ * DELETE REQUEST
  * DELETES A BLOG BY ID
  */
  router.delete("/:id",(req,res) => {
