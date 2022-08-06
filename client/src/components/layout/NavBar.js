@@ -1,35 +1,41 @@
+import { Link } from "react-router-dom";
+
 const NavBar = () => {
     return (
         <div>
             <nav className="navbar" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
-                    <a className="navbar-item" href="https://bulma.io">
+                    <div className="navbar-item">
                         <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28"/>
-                    </a>
-                    <a href role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    </div>
+                    <div role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
-                    </a>
+                    </div>
                 </div>
                 <div className="navbar-start">
-                    <a href className="navbar-item">
-                        Home
-                    </a>
-
-                    <a href className="navbar-item">
-                        Documentation
-                    </a>
+                    <Link to="/">
+                        <div className="navbar-item">
+                            Home
+                        </div>
+                    </Link>
+                    <Link to="/blogs">
+                        <div className="navbar-item">
+                            Blogs
+                        </div>
+                    </Link>
+                    
                 </div>
                 <div className="navbar-end">
                     <div className="navbar-item">
-                        <div class="buttons">
-                        <a href className="button is-primary">
+                        <div className="buttons">
+                        <div  className="button is-primary">
                             <strong>Sign up</strong>
-                        </a>
-                        <a href class="button is-light">
+                        </div>
+                        <div  className="button is-light">
                             Log in
-                        </a>
+                        </div>
                         </div>
                     </div>
                 </div>
