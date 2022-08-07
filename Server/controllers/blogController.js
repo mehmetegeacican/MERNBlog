@@ -33,10 +33,10 @@ const postBlog = async (req,res) => {
     try{
         const blogM = await Blogs.create({title,description,body});
         console.log(blogM);
-        res.status(200).json(blogM);
+        return res.status(200).json(blogM);
     }
     catch(err){
-        res.status(400).json({err : err.message})
+        return res.status(400).json({err : err.message})
     }
 }
 /**
@@ -53,9 +53,9 @@ const putBlog = async (req,res) => {
     })
 
     if(!updatedBlog){
-        res.status(400).json({err:"No such blog"});
+        return res.status(400).json({err:"No such blog"});
     }
-    res.status(200).json(updatedBlog);
+    return res.status(200).json(updatedBlog);
 }
 
 /**
