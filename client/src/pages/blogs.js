@@ -9,7 +9,8 @@ const Blogs = () => {
 
     useEffect(() => {
         const fetchBlogs = async () => {
-            const res = await fetch('/api/v1/blogs')
+            // REFACTOR -- USE ENV FOR LOCALHOST
+            const res = await fetch('http://localhost:4000/api/v1/blogs')
             const json = await res.json();
 
             if(res.ok){

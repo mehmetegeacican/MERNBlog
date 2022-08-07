@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
  */
 const getBlogs = async (req,res) => {
     const blogs = await Blogs.find({}).sort({createdAt: -1});
-    res.status(200).json(blogs);
+    return res.status(200).json(blogs);
 }
 /**
  * GET A SPECIFIC BLOG
@@ -22,7 +22,7 @@ const getABlog = async (req,res) => {
         res.status(404).json({error: "There is no blog with that id!!!"});
     }
 
-    res.status(200).json(blog);
+    return res.status(200).json(blog);
 }
 /**
  * POST BLOG
