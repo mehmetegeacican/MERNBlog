@@ -1,46 +1,43 @@
 import { Link } from "react-router-dom";
 
+
 const NavBar = () => {
     return (
-        <div>
-            <nav className="navbar" role="navigation" aria-label="main navigation">
-                <div className="navbar-brand">
-                    <div className="navbar-item">
-                        <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28"/>
-                    </div>
-                    <div role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </div>
+        <nav className="navbar is-primary">
+            <div className="navbar-brand">
+                <p className="navbar-item">
+                    <img src="https://bulma.io/images/bulma-logo.png" alt="" width="112" height="28"/>
+                </p>
+                <div className="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
+            </div>
+
+            <div id="navbarExampleTransparentExample" className="navbar-menu">
+                
                 <div className="navbar-start">
-                    <Link to="/">
-                        <div className="navbar-item">
-                            Home
-                        </div>
+                    <Link to= "/" className="navbar-item">
+                        Home
                     </Link>
-                    <Link to="/blogs">
-                        <div className="navbar-item">
-                            Blogs
-                        </div>
-                    </Link>
-                    
+                    <Link to= "/blogs" className="navbar-item" style={{hover:true}}> Blogs </Link>
                 </div>
+
                 <div className="navbar-end">
                     <div className="navbar-item">
                         <div className="buttons">
-                        <div  className="button is-primary">
-                            <strong>Sign up</strong>
-                        </div>
-                        <div  className="button is-light">
-                            Log in
-                        </div>
+                            <p className="button is-link is-inverted">
+                                <strong>Sign up</strong>
+                            </p>
+                            <p className="button is-light is-inverted">
+                                Log in
+                            </p>
                         </div>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
     )
 }
 

@@ -2,13 +2,14 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Home from "./pages/home";
 import NavBar from "./components/layout/NavBar";
 import Blogs from "./pages/blogs";
+import Footer from "./components/layout/Footer";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <NavBar/>
-        <div  className="pages">
+        <section  className="hero is-large">
           <Routes>
             <Route 
               path="/"
@@ -17,7 +18,10 @@ function App() {
               path="/blogs"
               element={<Blogs/>}/>
           </Routes>
-        </div>
+        </section>
+        <section className="hero is-small">
+          <Footer/>
+        </section>
       </BrowserRouter>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import BlogPost from "../components/BlogComponents/BlogPost";
 
 
 const Blogs = () => {
@@ -17,17 +17,15 @@ const Blogs = () => {
                 setBlogs(json);
             }
         }
-
         fetchBlogs();
     }, [])
 
     return(
         <div align="center" >
-            <h2> Blogs </h2>
             <hr/>
             <ul>
                 {blogs && blogs.map((blog) => (
-                    <li key={blog.title}> {blog.title} </li>
+                    <li key={blog.title}> <BlogPost title={blog.title} desc = {blog.description} body = {blog.body}/> </li>
                 ))}
             </ul>
         </div>
