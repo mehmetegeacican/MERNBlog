@@ -1,8 +1,8 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Home from "./pages/home";
 import NavBar from "./components/layout/NavBar";
 import Blogs from "./pages/blogs";
 import Footer from "./components/layout/Footer";
+import AddBlog from "./pages/addBlog";
 
 function App() {
   return (
@@ -13,10 +13,10 @@ function App() {
           <Routes>
             <Route 
               path="/"
-              element={<Home/>}/>
-            <Route
-              path="/blogs"
               element={<Blogs/>}/>
+            <Route 
+              path="/create"
+              element={<AddBlog/>}/>
           </Routes>
         </section>
         <section className="hero is-small">

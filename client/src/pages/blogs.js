@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import BlogPost from "../components/BlogComponents/BlogPost";
+import SearchBar from "../components/searchbar/searchBar";
 
 
 const Blogs = () => {
@@ -22,12 +23,32 @@ const Blogs = () => {
 
     return(
         <div align="center" >
-            <hr/>
-            <ul>
-                {blogs && blogs.map((blog) => (
-                    <li key={blog.title}> <BlogPost title={blog.title} desc = {blog.description} body = {blog.body}/> </li>
-                ))}
-            </ul>
+            <div className="container">
+                <hr/>
+                <section className="hero is-medium">
+                    <div className="hero is-medium has-text-centered">
+                        <h5 className="title is-2" style={{"color":"turquoise","fontFamily":"Brush Script MT"}}>MERNBlog</h5>
+                        <SearchBar/>
+                    </div>
+                </section>
+                <hr/>
+                <div className="columns is-multiline">
+
+                    {blogs && blogs.map((blog) => {
+                        let anImage = "https://picsum.photos/800/600/?random";
+                        return(
+                        <div className="column is-one-third" key={blog._id} style={{"fontFamily":"cursive"}}>
+                            <BlogPost title={blog.title} 
+                            desc = {blog.description} 
+                            body = {blog.body} 
+                            image = {anImage} 
+                            createdAt = {blog.createdAt}/>
+                            <hr style={{"backgroundColor":"turquoise"}}/>
+                        </div>
+                    )})}
+                
+                </div>
+            </div>
         </div>
     )
 }

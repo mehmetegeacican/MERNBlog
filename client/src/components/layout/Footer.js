@@ -1,12 +1,16 @@
 const Footer = () => {
     return(
-        <footer className="footer">
-            <div className="content has-text-centered">
-                <p>
-                <strong>MERNBlog</strong>
-                </p>
+        <div className="hero-foot">
+    
+            <div className="container">
+                <hr/>
+                <div className="tabs is-centered">
+                    <ul>
+                        <li><strong style={{"fontFamily":"cursive"}}>MERNBlog</strong></li>
+                    </ul>
+                </div>
             </div>
-        </footer>
+        </div>
     )
 }
 
