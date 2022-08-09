@@ -2,8 +2,8 @@
 const BlogPost = (props) => {
     return(
         <article className="columns is-multiline">
-            <div className="column post-img" style = {{"border-radius":"4px;"}}>
-                <img src={props.image} alt="blog-post" style={{"border-radius":"5px;"}}/>
+            <div className="column post-img" style = {{"borderRadius":"4px"}}>
+                <img src={props.image} alt="blog-post" style={{"borderRadius":"5px"}}/>
             </div>
             <div className="column is-12 featured-content ">
             <h3 className="heading post-category">{props.createdAt}</h3>
