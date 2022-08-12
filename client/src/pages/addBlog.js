@@ -1,17 +1,29 @@
+import AddForm from "../components/Forms/AddForm";
+import { postFetch } from "../services/requestServices";
+
+const BASE_URL = "http://localhost:3000/";
+
 const AddBlog = () => {
-    return(
-        <div align="center"> 
-            <div className="container">
-                <hr/>
-                <section className="hero is-medium">
-                    <div className="hero is-medium has-text-centered">
-                        <h5 className="title is-2" style={{"color":"turquoise","fontFamily":"Brush Script MT"}}>MERNBlog</h5>
-                    </div>
-                </section>
-            </div>
-        
-        </div>
-    )
-}
+  const save = async (title, desc, body) => {
+    let newBlog = {
+      title: title,
+      description: desc,
+      body: body,
+    };
+    let data = await postFetch("http://localhost:4000/api/v1/blogs", newBlog);
+    window.location.href = BASE_URL;
+  };
+
+  return (
+    <div align="center">
+      <div className="container">
+        <hr />
+        <section className="hero is-medium" align="center">
+          <AddForm save={save} />
+        </section>
+      </div>
+    </div>
+  );
+};
 
 export default AddBlog;
