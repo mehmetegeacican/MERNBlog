@@ -31,3 +31,15 @@ export const postFetch = async (url, data) => {
     },
   ];
 };
+
+
+export const deleteFetch = async (url,id) => {
+  let url_string = url + "/" + id;
+  const res = await axios.delete(url_string);
+  const json = await res.data;
+
+  if(json) return json;
+  return [
+    {err: "Could not be deleted"}
+  ]
+}

@@ -1,23 +1,29 @@
 
 const BlogPost = (props) => {
-    return(
+
+    return (
         <article className="columns is-multiline">
-            <div className="column post-img" style = {{"borderRadius":"4px"}}>
-                <img src={props.image} alt="blog-post" style={{"borderRadius":"5px"}}/>
-            </div>
-            <div className="column is-12 featured-content ">
+        <div className="column post-img" style={{ borderRadius: "4px" }}>
+            <img
+            src={props.image}
+            alt="blog-post"
+            style={{ borderRadius: "5px" }}
+            />
+        </div>
+        <div className="column is-12 featured-content ">
             <h3 className="heading post-category">{props.createdAt}</h3>
-            <h1 className="title post-title" style ={{"color":"darkred"}}>{props.title}</h1>
+            <h1 className="title post-title" style={{ color: "darkred" }}>
+            {props.title}
+            </h1>
             <p className="post-excerpt">{props.desc} </p>
-            <br/>
-            
+            <br />
+
             <p className="button is-primary is-outlined mr-1">Read More</p>
             <p className="button is-secondary is-outlined mr-1 ">Edit</p>
-            <p className="button is-danger is-outlined mr-1"> Delete</p>
-            
-            </div>
-      </article>           
-    )
-}
+            <p className="button is-danger is-outlined mr-1" onClick={() => props.openDeleteModal(props.id)}> Delete</p>
+        </div>
+        </article>
+    );
+};
 
 export default BlogPost;
