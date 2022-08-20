@@ -1,4 +1,8 @@
+import { Link } from "react-router-dom";
+
 const BlogPost = (props) => {
+  const detailLink = "/" + props.id;
+
   return (
     <article className="columns is-multiline">
       <div className="column post-img">
@@ -10,16 +14,20 @@ const BlogPost = (props) => {
       </div>
       <div className="column is-12 featured-content ">
         <h3 className="heading post-category">{props.createdAt}</h3>
+
         <h1 className="title post-title" style={{ color: "darkred" }}>
           {props.title}
         </h1>
+
         <p className="post-excerpt" style={{ fontStyle: "italic" }}>
           {" "}
           by {props.desc}{" "}
         </p>
         <br />
 
-        <p className="button is-primary is-outlined mr-1">Read More</p>
+        <Link to={detailLink}>
+          <p className="button is-primary is-outlined mr-1">Read More </p>
+        </Link>
         <p
           className="button is-secondary is-outlined mr-1 "
           onClick={() => props.openEditModal(props.id, props.blog)}
