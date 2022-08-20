@@ -75,7 +75,7 @@ const Blogs = () => {
     e.preventDefault();
     setFilteredBlogs(
       blogs.filter((blog) => {
-        return blog.title.toLowerCase().includes(e.target.value);
+        return blog.title.toLowerCase().includes(e.target.value.toLowerCase());
       })
     );
   };
@@ -98,9 +98,9 @@ const Blogs = () => {
           <div className="hero is-medium has-text-centered">
             <h5
               className="title is-2"
-              style={{ fontFamily: "Brush Script MT" }}
+              style={{ fontStyle: "italic" }}
             >
-              MERNBlog
+              M.E.R.N.Blog
             </h5>
             <div
               id="hero-input-group"
