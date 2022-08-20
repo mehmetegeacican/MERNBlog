@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import BlogPost from "../components/BlogPost";
-import { deleteFetch, getFetch } from "../services/requestServices";
+import { deleteFetch, getFetch, putFetch } from "../services/requestServices";
 import DeleteModal from "../components/Modals/DeleteModal";
+import EditModal from "../components/Modals/EditModal";
 
 const Blogs = () => {
   //Hooks
@@ -11,11 +12,24 @@ const Blogs = () => {
   let [filteredBlogs, setFilteredBlogs] = useState(blogs);
   //HOOK FOR DELETE MODAL
   let [deleteModal, setDeleteModal] = useState(null);
+  //HOOK FOR EDIT MODAL
+  let [editModal, setEditModal] = useState(null);
 
   const deleteData = async (id) => {
     const data = await deleteFetch("http://localhost:4000/api/v1/blogs", id);
     console.log("DELETED ", data);
     closeDeleteModal();
+    fetchBlogs();
+  };
+
+  const editData = async (id, editedBlog) => {
+    const data = await putFetch(
+      "http://localhost:4000/api/v1/blogs",
+      id,
+      editedBlog
+    );
+    console.log("UPDATED", data);
+    closeEditModal();
     fetchBlogs();
   };
   /**
@@ -32,6 +46,29 @@ const Blogs = () => {
    */
   const closeDeleteModal = () => {
     setDeleteModal(null);
+  };
+  /**
+   *
+   */
+  const closeEditModal = () => {
+    setEditModal(null);
+  };
+  /**
+   * THIS FUNCTION OPENS THE EDIT MODAL
+   * @param {*string} id  THE EDITED BLOGS ID
+   * @param {*Blog} editedBlog THE EDITED BLOG
+   */
+
+  const openEditModal = (id, editedBlog) => {
+    //console.log(id,"---",editedBlog);
+    setEditModal(
+      <EditModal
+        data={id}
+        blog={editedBlog}
+        close={closeEditModal}
+        edit={editData}
+      />
+    );
   };
 
   const handleChange = (e) => {
@@ -61,7 +98,7 @@ const Blogs = () => {
           <div className="hero is-medium has-text-centered">
             <h5
               className="title is-2"
-              style={{ color: "turquoise", fontFamily: "Brush Script MT" }}
+              style={{ fontFamily: "Brush Script MT" }}
             >
               MERNBlog
             </h5>
@@ -74,6 +111,7 @@ const Blogs = () => {
                 type="text"
                 placeholder="Search The Blogs that you want to find (Search by title)"
                 onChange={handleChange}
+                style={{ borderRadius: "3rem" }}
               />
             </div>
           </div>
@@ -89,23 +127,27 @@ const Blogs = () => {
                   key={blog._id}
                   style={{ fontFamily: "cursive" }}
                 >
+                  <hr style={{ backgroundColor: "darkgrey" }} />
                   <BlogPost
                     id={blog._id}
                     title={blog.title}
                     desc={blog.description}
                     body={blog.body}
+                    blog={blog}
                     image={anImage}
                     createdAt={blog.createdAt}
+                    openEditModal={() => openEditModal(blog._id, blog)}
                     openDeleteModal={() => openDeleteModal(blog._id)}
                   />
 
-                  <hr style={{ backgroundColor: "turquoise" }} />
+                  <hr style={{ backgroundColor: "darkgrey" }} />
                 </div>
               );
             })}
         </div>
       </div>
       {deleteModal}
+      {editModal}
     </div>
   );
 };

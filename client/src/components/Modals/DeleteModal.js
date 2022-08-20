@@ -6,7 +6,7 @@ const deleteModal = (props) => {
           <div className="container py-5 px-5">
             <div className="modal-card">
               <header className="modal-card-head">
-                <p className="modal-card-title">Deletion</p>
+                <p className="modal-card-title" style={{"color":"red"}}>Deletion</p>
                 <button
                   className="delete is-danger"
                   aria-label="close"
@@ -14,7 +14,7 @@ const deleteModal = (props) => {
                 ></button>
               </header>
               <section className="modal-card-body">
-                <h1 className="title is-2 is-danger"> Warning !!</h1>
+                <h1 className="title is-2" style={{"color":"red"}}> Warning !!</h1>
                 <hr />
                 <p>
                   {" "}

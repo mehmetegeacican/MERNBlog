@@ -37,13 +37,14 @@ const AddForm = ({ save }) => {
             type="text"
             placeholder="Enter your Blog's title"
             onChange={handleChangeTitle}
+            style = {{"borderRadius":"3rem"}}
           />
         </div>
       </div>
 
       <div className="field">
         <label className="label" style={{ fontFamily: "cursive" }}>
-          Description
+          Author
         </label>
         <div className="control centered">
           <input
@@ -51,6 +52,7 @@ const AddForm = ({ save }) => {
             type="text"
             placeholder="Enter your Blog's Description"
             onChange={handleChangeDesc}
+            style = {{"borderRadius":"3rem"}}
           />
         </div>
       </div>
@@ -82,6 +84,7 @@ const AddForm = ({ save }) => {
             placeholder="Enter your Blog here"
             rows={15}
             onChange={handleChangeBody}
+            style = {{"borderRadius":"1.8rem"}}
           ></textarea>
         </div>
       </div>
