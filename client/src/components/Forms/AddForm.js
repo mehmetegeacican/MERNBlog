@@ -6,6 +6,7 @@ const AddForm = ({ save }) => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [body, setBody] = useState("");
+  const [img, setImg] = useState(null);
 
   const handleChangeTitle = (e) => {
     e.preventDefault();
@@ -37,7 +38,7 @@ const AddForm = ({ save }) => {
             type="text"
             placeholder="Enter your Blog's title"
             onChange={handleChangeTitle}
-            style = {{"borderRadius":"3rem"}}
+            style={{ borderRadius: "3rem" }}
           />
         </div>
       </div>
@@ -52,24 +53,17 @@ const AddForm = ({ save }) => {
             type="text"
             placeholder="Enter your Blog's Description"
             onChange={handleChangeDesc}
-            style = {{"borderRadius":"3rem"}}
+            style={{ borderRadius: "3rem" }}
           />
         </div>
       </div>
 
       <div className="field">
         <label className="label" style={{ fontFamily: "cursive" }}>
-          Title is about
+          Picture
         </label>
-
         <div className="container">
-          <div className="select">
-            <select>
-              {aboutList.map((item) => {
-                return <option key={item}>{item}</option>;
-              })}
-            </select>
-          </div>
+          
         </div>
       </div>
 
@@ -84,7 +78,7 @@ const AddForm = ({ save }) => {
             placeholder="Enter your Blog here"
             rows={15}
             onChange={handleChangeBody}
-            style = {{"borderRadius":"1.8rem"}}
+            style={{ borderRadius: "1.8rem" }}
           ></textarea>
         </div>
       </div>
