@@ -1,12 +1,11 @@
 import { useState } from "react";
 
+
 const AddForm = ({ save }) => {
-  const aboutList = ["Web Dev", "Mobile Dev"];
   //HOOKS
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [body, setBody] = useState("");
-  const [img, setImg] = useState(null);
 
   const handleChangeTitle = (e) => {
     e.preventDefault();
@@ -63,7 +62,7 @@ const AddForm = ({ save }) => {
           Picture
         </label>
         <div className="container">
-          
+            
         </div>
       </div>
 

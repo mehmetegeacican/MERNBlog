@@ -7,9 +7,13 @@ const blogSchema = new Schema({
         type: String,
         required: true
     },
-    description:{
+    author:{
         type: String,
         required: true
+    },
+    profilePicAddress:{
+        type: String,
+        required: false
     },
     body:{
         type:String,

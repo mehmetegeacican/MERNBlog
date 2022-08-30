@@ -120,7 +120,7 @@ const Blogs = () => {
         <div className="columns is-multiline">
           {blogs &&
             filteredBlogs.map((blog) => {
-              let anImage = "https://picsum.photos/800/600/?random";
+              let anImage = "http://localhost:4000/assets/jshero.jpg";
               return (
                 <div
                   className="column is-one-third"
@@ -131,7 +131,7 @@ const Blogs = () => {
                   <BlogPost
                     id={blog._id}
                     title={blog.title}
-                    desc={blog.description}
+                    desc={blog.author}
                     body={blog.body}
                     blog={blog}
                     image={anImage}

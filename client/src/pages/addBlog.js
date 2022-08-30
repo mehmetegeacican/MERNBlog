@@ -3,14 +3,16 @@ import { postFetch } from "../services/requestServices";
 
 const BASE_URL = "http://localhost:3000/";
 
+
 const AddBlog = () => {
-  const save = async (title, desc, body) => {
+  const save = async (title, writer, body) => {
     let newBlog = {
       title: title,
-      description: desc,
-      body: body,
+      author: writer,
+      body: body
     };
     let data = await postFetch("http://localhost:4000/api/v1/blogs", newBlog);
+    console.log("NEW DATA", data);
     window.location.href = BASE_URL;
   };
 

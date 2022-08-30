@@ -30,9 +30,9 @@ const getABlog = async (req, res) => {
  * ADDS THE DOC TO THE DB
  */
 const postBlog = async (req, res) => {
-  const { title, description, body } = req.body;
+  const { title, author, body } = req.body;
   try {
-    const blogM = await Blogs.create({ title, description, body });
+    const blogM = await Blogs.create({ title, author, body });
     console.log(blogM);
     return res.status(200).json(blogM);
   } catch (err) {

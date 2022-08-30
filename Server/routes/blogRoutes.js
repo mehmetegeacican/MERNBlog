@@ -18,7 +18,7 @@ router.post("/", postBlog);
 //DELETE REQUEST, DELETE BLOG BY ID
 router.delete("/:id",deleteBlog);
 //UPDATE REQUESTİ UPDATES BLOG BY ID AND REQ BODY
- router.put("/:id",putBlog);
+router.put("/:id",putBlog);
 
 //module exports
 module.exports = router
