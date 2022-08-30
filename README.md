@@ -9,7 +9,7 @@ The MERNBlog is a Full Stack Development Project that was built with the Followi
 
 # Blog
 
-The Project is a blog project in which users can create, read , update and delete blogs.
+The Project is a blog project in which users can create, read , update and delete blogs. Users can filter the blogs based on the title.
 
 # Screenshots (Dark Mode)
 <img src="./MERNBlogPics/MERNBlog1.PNG" alt="intro" width = 45% height = 50%></img>
