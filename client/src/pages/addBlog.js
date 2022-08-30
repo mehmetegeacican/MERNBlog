@@ -1,19 +1,16 @@
-import axios from "axios";
 import AddForm from "../components/Forms/AddForm";
 import { postFetch } from "../services/requestServices";
 
 const BASE_URL = "http://localhost:3000/";
 
-
 const AddBlog = () => {
-  const save = async (title, writer, body,pic) => {
-    console.log(pic);
+  const save = async (title, writer, body, pictureName) => {
     let newBlog = {
       title: title,
       author: writer,
-      body: body
+      profilePicAddress: "http://localhost:4000/assets/" + pictureName,
+      body: body,
     };
-    await axios.post("http://localhost:4000/uploads",pic);
 
     let data = await postFetch("http://localhost:4000/api/v1/blogs", newBlog);
     console.log("NEW DATA", data);

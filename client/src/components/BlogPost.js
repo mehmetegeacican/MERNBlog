@@ -1,27 +1,28 @@
 import { Link } from "react-router-dom";
 
 const BlogPost = (props) => {
-  const detailLink = "/" + props.id;
-
+  const detailLink = "/" + props.blog._id;
   return (
     <article className="columns is-multiline">
       <div className="column post-img">
         <img
-          src={props.image}
+          src={props.blog.profilePicAddress}
           alt="blog-post"
           style={{ borderRadius: "4.5rem" }}
+          width="250rem"
+          height="250rem"
         />
       </div>
       <div className="column is-12 featured-content ">
-        <h3 className="heading post-category">{props.createdAt}</h3>
+        <h3 className="heading post-category">{props.blog.createdAt}</h3>
 
         <h1 className="title post-title" style={{ color: "darkred" }}>
-          {props.title}
+          {props.blog.title}
         </h1>
 
         <p className="post-excerpt" style={{ fontStyle: "italic" }}>
           {" "}
-          by {props.desc}{" "}
+          by {props.blog.author}{" "}
         </p>
         <br />
 

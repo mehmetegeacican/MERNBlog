@@ -96,10 +96,7 @@ const Blogs = () => {
         <hr />
         <section className="hero is-medium">
           <div className="hero is-medium has-text-centered">
-            <h5
-              className="title is-2"
-              style={{ fontStyle: "italic" }}
-            >
+            <h5 className="title is-2" style={{ fontStyle: "italic" }}>
               M.E.R.N.Blog
             </h5>
             <div
@@ -120,7 +117,6 @@ const Blogs = () => {
         <div className="columns is-multiline">
           {blogs &&
             filteredBlogs.map((blog) => {
-              let anImage = "http://localhost:4000/assets/jshero.jpg";
               return (
                 <div
                   className="column is-one-third"
@@ -129,13 +125,7 @@ const Blogs = () => {
                 >
                   <hr style={{ backgroundColor: "darkgrey" }} />
                   <BlogPost
-                    id={blog._id}
-                    title={blog.title}
-                    desc={blog.author}
-                    body={blog.body}
                     blog={blog}
-                    image={anImage}
-                    createdAt={blog.createdAt}
                     openEditModal={() => openEditModal(blog._id, blog)}
                     openDeleteModal={() => openDeleteModal(blog._id)}
                   />

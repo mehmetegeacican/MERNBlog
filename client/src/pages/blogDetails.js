@@ -7,13 +7,16 @@ const BlogDetails = () => {
   let params = useParams();
   //STATE VAR
   let [data, setData] = useState({});
-  let img = "https://picsum.photos/800/600/?random";
+  let [image,setImage] = useState("https://picsum.photos/800/600/?random");
   //DATA FETCH
   const fetchBlog = async () => {
     const fetched = await getFetch(
       "http://localhost:4000/api/v1/blogs/" + params.id
     );
     setData(fetched);
+    if(fetched.profilePicAddress !== "http:localhost:4000/assets/undefined"){
+      setImage(fetched.profilePicAddress);
+    }
   };
 
   useEffect(() => {
@@ -30,7 +33,7 @@ const BlogDetails = () => {
               <div className="column is-8 is-offset-2">
                 <div className="column post-img">
                   <img
-                    src={img}
+                    src={image}
                     alt="blog-post"
                     style={{ borderRadius: "4.5rem" }}
                   />
