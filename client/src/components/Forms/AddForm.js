@@ -1,11 +1,12 @@
 import { useState } from "react";
 
-
 const AddForm = ({ save }) => {
   //HOOKS
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [body, setBody] = useState("");
+  const [pic, setPic] = useState({});
+  let [picName,setPicName] = useState("");
 
   const handleChangeTitle = (e) => {
     e.preventDefault();
@@ -24,6 +25,24 @@ const AddForm = ({ save }) => {
     //console.log("Body",e.target.value);
     setBody(e.target.value);
   };
+
+  const handleFileChange = (e) => {
+    setPic(e.target.files[0]);
+    setPicName(e.target.files[0].name);
+  };
+
+
+  const uploadAndSave = (title,desc,body,pic) => {
+    let formData = new FormData();
+    formData.append("image",pic)
+    //UPLOAD THE PICTURE
+    fetch("http://localhost:4000/uploads",{
+      method:"post",
+      body:formData
+    }).then(() => {
+      save(title,desc,body,pic);
+    })
+  }
 
   return (
     <section>
@@ -62,7 +81,20 @@ const AddForm = ({ save }) => {
           Picture
         </label>
         <div className="container">
+          <form className="form" action="/uploads" method="post">
+            <div className="file has-name">
+              <label className="file-label">
+                <input className="file-input" type="file" name="image" onChange={handleFileChange} ></input>
+                <span className="file-cta">
+                  <span className="file-label">Choose a file…</span>
+                </span>
+                <span className="file-name">
+                  {picName}
+                </span>
+              </label>
+            </div>
             
+          </form>
         </div>
       </div>
 
@@ -89,7 +121,8 @@ const AddForm = ({ save }) => {
             <div className="control">
               <button
                 className="button is-link"
-                onClick={() => save(title, desc, body)}
+                onClick={() => uploadAndSave(title,desc,body,pic)}
+                type="submit"
               >
                 Create
               </button>

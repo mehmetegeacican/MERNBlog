@@ -14,7 +14,7 @@ const fileStorageEngine = multer.diskStorage({
     cb(null, "./assets");
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    cb(null, Date.now() + "__" + file.originalname);
   },
 });
 
@@ -22,6 +22,7 @@ const upload = multer({ storage: fileStorageEngine });
 
 //IMAGE UPLOAD API
 app.post("/uploads", upload.single("image"), (req, res) => {
+  console.log(req.body);
   console.log("File Uploaded Successfully");
   res.send("File Upload success");
 });
