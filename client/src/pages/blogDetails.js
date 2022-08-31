@@ -7,14 +7,15 @@ const BlogDetails = () => {
   let params = useParams();
   //STATE VAR
   let [data, setData] = useState({});
-  let [image,setImage] = useState("https://picsum.photos/800/600/?random");
+  let [image, setImage] = useState("https://picsum.photos/800/600/?random");
+  let date = new Date(data.createdAt);
   //DATA FETCH
   const fetchBlog = async () => {
     const fetched = await getFetch(
       "http://localhost:4000/api/v1/blogs/" + params.id
     );
     setData(fetched);
-    if(fetched.profilePicAddress !== "http:localhost:4000/assets/undefined"){
+    if (fetched.profilePicAddress !== "http:localhost:4000/assets/undefined") {
       setImage(fetched.profilePicAddress);
     }
   };
@@ -44,7 +45,10 @@ const BlogDetails = () => {
               <div className="columns">
                 <div className="column is-8 is-offset-2">
                   <div className="content is-medium">
-                    <h2 className="subtitle is-4">{data.createdAt}</h2>
+                    <h2 className="subtitle is-4">
+                      {date.getDay()}/{date.getMonth()}/{date.getFullYear()}{" "}
+                      {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}
+                    </h2>
                     <h1 className="title">{data.title}</h1>
                     <p>{data.body}</p>
                     <br />

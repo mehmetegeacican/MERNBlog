@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 
 const BlogPost = (props) => {
   const detailLink = "/" + props.blog._id;
+  let date = new Date(props.blog.createdAt);
+
   return (
     <article className="columns is-multiline">
       <div className="column post-img">
@@ -14,7 +16,8 @@ const BlogPost = (props) => {
         />
       </div>
       <div className="column is-12 featured-content ">
-        <h3 className="heading post-category">{props.blog.createdAt}</h3>
+        <h3 className="heading post-category">
+          {date.getDay()}/{date.getMonth()}/{date.getFullYear()} {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}</h3>
 
         <h1 className="title post-title" style={{ color: "darkred" }}>
           {props.blog.title}
