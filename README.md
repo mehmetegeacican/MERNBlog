@@ -9,7 +9,15 @@ The MERNBlog is a Full Stack Development Project that was built with the Followi
 
 # Blog
 
-The Project is a blog project in which users can create, read , update and delete blogs.
+The Project is a blog project in which users can create, read , update and delete blogs. Users can filter the blogs based on the title.
+
+# Screenshots (Dark Mode)
+<img src="./MERNBlogPics/MERNBlog1.PNG" alt="intro" width = 45% height = 50%></img>
+<img src="./MERNBlogPics/MERNBlog2.PNG" alt="intro" width = 45% height = 50%></img>
+<img src="./MERNBlogPics/MERNBlogADD.PNG" alt="intro" width = 45% height = 50%></img>
+<img src="./MERNBlogPics/MERNBlogDelete.PNG" alt="intro" width = 45% height = 50%></img>
+<img src="./MERNBlogPics/MERNBlogDetails.PNG" alt="intro" width = 45% height = 50%></img>
+<img src="./MERNBlogPics/MERNBlogEdit.PNG" alt="intro" width = 45% height = 50%></img>
 
 # How to 
 You need to start the server in order to access to the datas.
