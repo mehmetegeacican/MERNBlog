@@ -123,14 +123,15 @@ const Blogs = () => {
                   key={blog._id}
                   style={{ fontFamily: "cursive" }}
                 >
-                  <hr style={{ backgroundColor: "darkgrey" }} />
-                  <BlogPost
-                    blog={blog}
-                    openEditModal={() => openEditModal(blog._id, blog)}
-                    openDeleteModal={() => openDeleteModal(blog._id)}
-                  />
-
-                  <hr style={{ backgroundColor: "darkgrey" }} />
+                  <div className="card" style={{"minHeight":"30rem", "maxHeight":"50rem"}} card-shadow="1em" >
+                    <div className="card-content">
+                      <BlogPost
+                        blog={blog}
+                        openEditModal={() => openEditModal(blog._id, blog)}
+                        openDeleteModal={() => openDeleteModal(blog._id)}
+                      />
+                    </div>
+                  </div>
                 </div>
               );
             })}
