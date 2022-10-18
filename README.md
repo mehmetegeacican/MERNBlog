@@ -1,3 +1,6 @@
+
+## `DEPRECATED`
+
 # MERNBlog
 
 The MERNBlog is a Full Stack Development Project that was built with the Following Technologies:
