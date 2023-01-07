@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
  * @param {String} mongoURI THE URI OF THE MONGO STRING
  */
 const connectMongo = async (mongoURI) => {
-  mongoose.connect(mongoURI);
+  mongoose.connect(mongoURI,{ useNewUrlParser: true,useUnifiedTopology: true});
 };
 
 const disconnectMongo = async () => {
