@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const blogRoutes = require("./routes/blogRoutes");
+const userRotes = require('./routes/userRoutes');
+
 const multer = require("multer");
 
 //MIDDLEWARE
@@ -30,5 +32,5 @@ app.post("/uploads", upload.single("image"), (req, res) => {
 app.use("/assets", express.static(__dirname + "/assets"));
 //routes
 app.use("/api/v1/blogs/", blogRoutes);
-
+app.use("/api/v2/users/",userRotes);
 module.exports = app;
