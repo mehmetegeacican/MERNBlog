@@ -11,7 +11,7 @@ let non_existent_id = "62ef789cb62a803d2253123zz";
 
 describe("TESTS FOR BLOG API ENDPOINTS", () => {
   /**
-   * BEFORE EACH
+   * BEFORE ALL
    */
   beforeAll(async () => {
     try {
@@ -23,7 +23,7 @@ describe("TESTS FOR BLOG API ENDPOINTS", () => {
   }, 25000);
 
   /**
-   * AFTER EACH
+   * AFTER ALL
    */
   afterAll(async () => {
     console.log("Test cases completed. Disconnecting from MongoDB");
