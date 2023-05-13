@@ -24,7 +24,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
     afterAll(async () => {
         console.log("Test cases completed. Disconnecting from MongoDB");
         await disconnectMongo();
-    }, 30000);
+    }, 50000);
 
     /**
      * TEST CASE 1 -- SIGNING UP WITH NO DATA
@@ -65,8 +65,48 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
     /**
      * TEST CASE 4 -- SIGNING UP SUCCESSFULLY
      */
-
+    describe("POST / ", () => {
+        test("SHOULD CREATE A NEW USER SUCCESSFULLY", async () => {
+            const res = await req.post("/api/v2/users/signup").send({
+                email: "yoshi@dev.com",
+                password: "abcABC123!"
+            });
+            expect(res.status).toBe(201);
+            expect(res.headers["content-type"]).toEqual(
+                expect.stringContaining("json")
+            );
+        });
+    });
     /**
      * TEST CASE 5 -- SIGNING UP WITH ALREADY IN-USE EMAIL
      */
+    describe("POST / ", () => {
+        test("SHOULD NOT CREATE A NEW USER WITH EXISTING ACCOUNT", async () => {
+            const res = await req.post("/api/v2/users/signup").send({
+                email: "yoshi@dev.com",
+                password: "abcABC123!"
+            });
+            expect(res.status).toBe(400);
+        });
+    });
+    /**
+     * TEST CASE 6 -- DELETE A USER 
+     */
+    describe("DELETE / ", () => {
+        test("SHOULD DELETE ACCOUNT", async () => {
+            const res = await req.delete("/api/v2/users/deleteAccount?email=yoshi@dev.com").send({
+            });
+            expect(res.status).toBe(200);
+        });
+    });
+    /**
+     * TEST CASE 7 -- DELETE A NON EXISTING USER
+     */
+    describe("DELETE / ", () => {
+        test("SHOULD NOT DELETE A NONEXISTING ACCOUNT", async () => {
+            const res = await req.delete("/api/v2/users/deleteAccount?email=yoshi@dev.com").send({
+            });
+            expect(res.status).toBe(400);
+        });
+    });
 })

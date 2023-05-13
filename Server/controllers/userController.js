@@ -23,10 +23,26 @@ const signupUser = async (req, res) => {
     catch (error) {
         res.status(400).json({ error: error.message });
     }
+}
 
+/**
+ * Delete account
+ * @param {*} req 
+ * @param {*} res 
+ */
+const deleteAccount = async (req, res) => {
+    const  {email}  = req.query;
+    try {
+        const user = await User.deleteUser(email);
+        res.status(200).json({ user });
+    }
+    catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 }
 
 module.exports = {
     signupUser,
-    loginUser
+    loginUser,
+    deleteAccount
 }
