@@ -20,8 +20,8 @@ const signupUser = async (req, res) => {
         const user = await User.signup(email, password);
         res.status(201).json({ email, user });
     }
-    catch (e) {
-        res.status(400).json({ error: e.msg });
+    catch (error) {
+        res.status(400).json({ error: error.message });
     }
 
 }
