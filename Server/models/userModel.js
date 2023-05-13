@@ -46,5 +46,27 @@ userSchema.statics.signup = async function (email, password) {
     const user = await this.create({ email, password: hash });
     return user;
 }
+/**
+ * Static Method for Deleting a User
+ * @param {*string} email 
+ */
+userSchema.statics.deleteUser = async function (email) {
+    //Step 1 -- Check for Empty String Email data
+    if(!email){
+        throw Error("Please enter a valid email");
+    }
+    
+    if(!validator.isEmail(email)){
+        throw Error('Please enter a valid email');
+    }
+    //Step 2 -- Find the User by email and delete it
+    const exists = await this.findOne({email}); 
+    if(!exists){
+        throw Error("User Does not exists!");
+    }
+    const deletedUser = await this.deleteOne({'email':email});
+    return deletedUser;
+    
+}
 
 module.exports = mongoose.model('User', userSchema);
