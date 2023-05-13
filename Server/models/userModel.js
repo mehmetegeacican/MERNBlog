@@ -16,6 +16,32 @@ const userSchema = new Schema({
     }
 })
 
+/**
+ * Static Function for Login
+ * @param {*} email 
+ * @param {*} password 
+ */
+userSchema.statics.login = async function (email,password){
+    //Step 1 -- Checkers 
+    if(!email || !password){
+        throw Error('All Fields must be filled');
+    }
+    const exists = await this.findOne({email});
+    if(!exists){
+        throw Error('User does not exist');
+    }
+
+    //Step 2 -- Compare passwords, pass regular password
+    //bcrypt hashes it and compares with the password
+    const match = await bcrypt.compare(password,exists.password);
+
+    if(!match){
+        throw Error("Incorrect Password");
+    }
+
+    return exists;
+
+}
 
 /**
  * Static function for sign Up
