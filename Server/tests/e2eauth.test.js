@@ -90,7 +90,56 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
         });
     });
     /**
-     * TEST CASE 6 -- DELETE A USER 
+     * TEST CASE 6 -- LOGIN USER WITH INCORRECT PASSWORD
+     */
+    describe("POST / ", () => {
+        test("SHOULD NOT LOGIN WITH INCORRECT PASSWORD", async () => {
+            const res = await req.post("/api/v2/users/login").send({
+                email: "yoshi@dev.com",
+                password: "abcABC123"
+            });
+            expect(res.status).toBe(400);
+        });
+    });
+    /**
+     * TEST CASE 7-- LOGIN USER WITH NON EXISTING USER
+     */
+    describe("POST / ", () => {
+        test("SHOULD NOT LOGIN TO A NON EXISTING USER", async () => {
+            const res = await req.post("/api/v2/users/login").send({
+                email: "AAA@dev.com",
+                password: "abcABC123!"
+            });
+            expect(res.status).toBe(400);
+        });
+    });
+    /**
+     * TEST CASE 8-- LOGIN USER WITH NON EXISTING USER
+     */
+    describe("POST / ", () => {
+        test("SHOULD NOT LOGIN TO A NON EXISTING USER", async () => {
+            const res = await req.post("/api/v2/users/login").send({
+                email: "AAA@dev.com",
+                password: "abcABC123!"
+            });
+            expect(res.status).toBe(400);
+        });
+    });
+    /**
+     * TEST CASE 9-- LOGIN USER WITH EMPTY DATAS
+     */
+    describe("POST / ", () => {
+        test("SHOULD LOGIN", async () => {
+            const res = await req.post("/api/v2/users/login").send({
+                email: "",
+                password: ""
+            });
+            expect(res.status).toBe(400);
+        });
+    });
+
+    /**
+     * TEST CASE 10 -- DELETE A USER 
      */
     describe("DELETE / ", () => {
         test("SHOULD DELETE ACCOUNT", async () => {
@@ -100,7 +149,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
         });
     });
     /**
-     * TEST CASE 7 -- DELETE A NON EXISTING USER
+     * TEST CASE 11 -- DELETE A NON EXISTING USER
      */
     describe("DELETE / ", () => {
         test("SHOULD NOT DELETE A NONEXISTING ACCOUNT", async () => {
