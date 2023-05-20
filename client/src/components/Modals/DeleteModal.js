@@ -1,4 +1,13 @@
-const deleteModal = (props) => {
+import { useAuthContext } from "../../hooks/useAuthContext";
+
+
+
+const DeleteModal = (props) => {
+
+  const {user} = useAuthContext();
+  const config = {
+    headers : {'Authorization' : 'Bearer ' + user.token} 
+  }
   return (
     <section>
       <div className="modal is-active is-centered">
@@ -25,7 +34,7 @@ const deleteModal = (props) => {
               <footer className="modal-card-foot">
                 <button
                   className="button is-danger"
-                  onClick={() => props.delete(props.data)}
+                  onClick={() => props.delete(props.data,config)}
                 >
                   DELETE
                 </button>
@@ -40,4 +49,4 @@ const deleteModal = (props) => {
     </section>
   );
 };
-export default deleteModal;
+export default DeleteModal;
