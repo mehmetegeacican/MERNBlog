@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function SignupForm({ email, setEmail, password, setPassword }) {
+export default function SignupForm({  setEmail, setPassword , save}) {
     /**
      * Handles the email
      * @param {*} e 
@@ -57,7 +57,7 @@ export default function SignupForm({ email, setEmail, password, setPassword }) {
                         <div className="control">
                             <button
                                 className="button is-link"
-                                onClick={() => console.log(email, password)}
+                                onClick={save}
                                 type="submit"
                             >
                                 Sign Up
