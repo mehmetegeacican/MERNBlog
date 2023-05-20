@@ -1,4 +1,13 @@
-const deleteModal = (props) => {
+import { useAuthContext } from "../../hooks/useAuthContext";
+
+
+
+const DeleteModal = (props) => {
+
+  const { user } = useAuthContext();
+  const config = {
+    headers: { 'Authorization': 'Bearer ' + user.token }
+  }
   return (
     <section>
       <div className="modal is-active is-centered">
@@ -6,7 +15,7 @@ const deleteModal = (props) => {
           <div className="container py-5 px-5">
             <div className="modal-card">
               <header className="modal-card-head">
-                <p className="modal-card-title" style={{"color":"red"}}>Deletion</p>
+                <p className="modal-card-title" style={{ "color": "red" }}>Deletion</p>
                 <button
                   className="delete is-danger"
                   aria-label="close"
@@ -14,7 +23,7 @@ const deleteModal = (props) => {
                 ></button>
               </header>
               <section className="modal-card-body">
-                <h1 className="title is-2" style={{"color":"red"}}> Warning !!</h1>
+                <h1 className="title is-2" style={{ "color": "red" }}> Warning !!</h1>
                 <hr />
                 <p>
                   {" "}
@@ -25,7 +34,7 @@ const deleteModal = (props) => {
               <footer className="modal-card-foot">
                 <button
                   className="button is-danger"
-                  onClick={() => props.delete(props.data)}
+                  onClick={() => props.delete(props.data, config)}
                 >
                   DELETE
                 </button>
@@ -40,4 +49,4 @@ const deleteModal = (props) => {
     </section>
   );
 };
-export default deleteModal;
+export default DeleteModal;

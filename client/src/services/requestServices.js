@@ -5,9 +5,9 @@ const axios = require("axios");
  * @param {*String} url THE URL
  * @returns JSON DATA
  */
-export const getFetch = async (url) => {
+export const getFetch = async (url, config) => {
   // REFACTOR -- USE ENV FOR LOCALHOST
-  const res = await axios.get(url);
+  const res = await axios.get(url, config);
   const json = await res.data;
 
   if (json) return json;
@@ -20,8 +20,8 @@ export const getFetch = async (url) => {
  * @param {*} data THE JSON DATA
  * @returns
  */
-export const postFetch = async (url, data) => {
-  const res = await axios.post(url, data);
+export const postFetch = async (url, data, config) => {
+  const res = await axios.post(url, data, config);
   const json = await res.data;
 
   if (json) return json;
@@ -38,9 +38,9 @@ export const postFetch = async (url, data) => {
  * @param {*string} id THE PARAMETER ID
  * @returns THE DELETED JSON
  */
-export const deleteFetch = async (url, id) => {
+export const deleteFetch = async (url, id, config) => {
   let url_string = url + "/" + id;
-  const res = await axios.delete(url_string);
+  const res = await axios.delete(url_string, config);
   const json = await res.data;
 
   if (json) return json;
@@ -53,11 +53,11 @@ export const deleteFetch = async (url, id) => {
  * @param {*JSON} jsonData THE JSON DATA WITH THE EDITED VALUES
  * @returns THE OLD VERSION OF THE CHANGED VALUE
  */
-export const putFetch = async (url, id, jsonData) => {
+export const putFetch = async (url, id, jsonData, config) => {
   let url_string = url + "/" + id;
   try {
     //console.log("url",url_string);
-    const res = await axios.put(url_string, jsonData);
+    const res = await axios.put(url_string, jsonData, config);
     const json = await res.data;
     if (json) return json;
     return [];

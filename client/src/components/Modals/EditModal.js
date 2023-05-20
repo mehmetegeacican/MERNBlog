@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const EditModal = (props) => {
   //HOOKS
   let [title, setTitle] = useState(props.blog.title);
   let [body, setBody] = useState(props.blog.body);
+  const { user } = useAuthContext();
 
   const handleChangeTitle = (e) => {
     e.preventDefault();
@@ -16,13 +18,16 @@ const EditModal = (props) => {
   };
 
   const update = () => {
+    const config = {
+      headers: { 'Authorization': 'Bearer ' + user.token }
+    }
     let editedBlog = {
       title: title,
       body: body,
       description: props.blog.description,
     };
     //console.log("IN MODAL",editedBlog);
-    props.edit(props.blog._id, editedBlog);
+    props.edit(props.blog._id, editedBlog, config);
   };
 
   return (
