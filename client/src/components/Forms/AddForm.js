@@ -3,7 +3,6 @@ import { useState } from "react";
 const AddForm = ({ save }) => {
   //HOOKS
   const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
   const [body, setBody] = useState("");
   const [pic, setPic] = useState({});
   let [picName, setPicName] = useState("");
@@ -14,11 +13,6 @@ const AddForm = ({ save }) => {
     setTitle(e.target.value);
   };
 
-  const handleChangeDesc = (e) => {
-    e.preventDefault();
-    //console.log("Desc",e.target.value);
-    setDesc(e.target.value);
-  };
 
   const handleChangeBody = (e) => {
     e.preventDefault();
@@ -31,7 +25,7 @@ const AddForm = ({ save }) => {
     setPicName(e.target.files[0].name);
   };
 
-  const uploadAndSave = (title, desc, body, pic) => {
+  const uploadAndSave = (title, body, pic) => {
     let formData = new FormData();
     formData.append("image", pic);
     //UPLOAD THE PICTURE
@@ -39,7 +33,7 @@ const AddForm = ({ save }) => {
       method: "post",
       body: formData,
     }).then(() => {
-      save(title, desc, body, pic.name);
+      save(title, body, pic.name);
     });
   };
 
@@ -59,22 +53,6 @@ const AddForm = ({ save }) => {
           />
         </div>
       </div>
-
-      <div className="field">
-        <label className="label" style={{ fontFamily: "cursive" }}>
-          Author
-        </label>
-        <div className="control centered">
-          <input
-            className="input"
-            type="text"
-            placeholder="Enter your Blog's Description"
-            onChange={handleChangeDesc}
-            style={{ borderRadius: "3rem" }}
-          />
-        </div>
-      </div>
-
       <div className="field">
         <label className="label" style={{ fontFamily: "cursive" }}>
           Picture
@@ -122,7 +100,7 @@ const AddForm = ({ save }) => {
             <div className="control">
               <button
                 className="button is-link"
-                onClick={() => uploadAndSave(title, desc, body, pic)}
+                onClick={() => uploadAndSave(title, body, pic)}
                 type="submit"
               >
                 Create
