@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function LoginForm({email,password,setEmail,setPassword}) {
+export default function LoginForm({ setEmail, setPassword, save, error, isLoading }) {
 
     /**
      * Handles the email
@@ -59,8 +59,9 @@ export default function LoginForm({email,password,setEmail,setPassword}) {
                         <div className="control">
                             <button
                                 className="button is-link"
-                                onClick={() => console.log(email,password,"login")}
+                                onClick={() => save()}
                                 type="submit"
+                                disabled={isLoading}
                             >
                                 Sign In
                             </button>
@@ -68,6 +69,13 @@ export default function LoginForm({email,password,setEmail,setPassword}) {
                     </div>
                 </div>
             </div>
+            {error && (
+                <section className='section is-small'>
+                    <div className="notification is-danger is-light" style={{ fontFamily: "cursive" }}>
+                        {error}
+                    </div>
+                </section>
+            )}
         </section>
     )
 }
