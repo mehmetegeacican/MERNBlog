@@ -7,7 +7,7 @@ const BASE_URL = "http://localhost:3000/";
 
 const AddBlog = () => {
 
-  const {user} = useAuthContext();
+  const { user } = useAuthContext();
 
   const save = async (title, writer, body, pictureName) => {
     let newBlog = {
@@ -16,11 +16,11 @@ const AddBlog = () => {
       profilePicAddress: "http://localhost:4000/assets/" + pictureName,
       body: body,
     };
-    if(user){
+    if (user) {
       const config = {
-        headers : {'Authorization' : 'Bearer ' + user.token} 
+        headers: { 'Authorization': 'Bearer ' + user.token }
       }
-      let data = await postFetch("http://localhost:4000/api/v1/blogs", newBlog,config);
+      let data = await postFetch("http://localhost:4000/api/v1/blogs", newBlog, config);
       console.log("NEW DATA", data);
       window.location.href = BASE_URL;
     }

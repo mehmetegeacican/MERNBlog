@@ -5,7 +5,7 @@ const EditModal = (props) => {
   //HOOKS
   let [title, setTitle] = useState(props.blog.title);
   let [body, setBody] = useState(props.blog.body);
-  const {user} = useAuthContext();
+  const { user } = useAuthContext();
 
   const handleChangeTitle = (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ const EditModal = (props) => {
 
   const update = () => {
     const config = {
-      headers : {'Authorization' : 'Bearer ' + user.token} 
+      headers: { 'Authorization': 'Bearer ' + user.token }
     }
     let editedBlog = {
       title: title,
@@ -27,7 +27,7 @@ const EditModal = (props) => {
       description: props.blog.description,
     };
     //console.log("IN MODAL",editedBlog);
-    props.edit(props.blog._id, editedBlog,config);
+    props.edit(props.blog._id, editedBlog, config);
   };
 
   return (

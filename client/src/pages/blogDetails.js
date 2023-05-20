@@ -33,8 +33,8 @@ const BlogDetails = () => {
   }, [user]);
 
   useEffect(() => {
-    console.log(data,"Data here ");
-  },[data]);
+    console.log(data, "Data here ");
+  }, [data]);
   return (
     <section>
       <section className="hero">
@@ -75,12 +75,12 @@ const BlogDetails = () => {
                 </div>
               </div>
             </section>)}
-            {Object.keys(data).length === 0  && (
+            {Object.keys(data).length === 0 && (
               <section>
                 <div className="columns">
                   <div className="content is-medium">
                     <div className="notification is-warning is-light">
-                       The data could not be loaded. Please wait. If the response is taking too long, please check your connection
+                      The data could not be loaded. Please wait. If the response is taking too long, please check your connection
                     </div>
                     <p
                       className="button is-link is-outlined"

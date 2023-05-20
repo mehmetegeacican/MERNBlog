@@ -14,19 +14,19 @@ const Blogs = () => {
   let [deleteModal, setDeleteModal] = useState(null);
   //HOOK FOR EDIT MODAL
   let [editModal, setEditModal] = useState(null);
-  const {user} = useAuthContext(); 
+  const { user } = useAuthContext();
   //Trigger for activating get fetch
-  const [trigger,setTrigger] = useState(false);
+  const [trigger, setTrigger] = useState(false);
 
-  const deleteData = async (id,config) => {
-    const data = await deleteFetch("http://localhost:4000/api/v1/blogs", id,config);
+  const deleteData = async (id, config) => {
+    const data = await deleteFetch("http://localhost:4000/api/v1/blogs", id, config);
     console.log("DELETED ", data);
     setTrigger(!trigger);
     closeDeleteModal();
   };
 
-  const editData = async (id, editedBlog,config) => {
-    console.log(config,"Config here")
+  const editData = async (id, editedBlog, config) => {
+    console.log(config, "Config here")
     const data = await putFetch(
       "http://localhost:4000/api/v1/blogs",
       id,
@@ -36,7 +36,7 @@ const Blogs = () => {
     console.log("UPDATED", data);
     setTrigger(!trigger);
     closeEditModal();
-    
+
   };
   /**
    * THIS FUNCTION IS FOR OPENING THE DELETE MODAL
@@ -87,25 +87,25 @@ const Blogs = () => {
   };
   const fetchBlogs = async (config) => {
     // REFACTOR -- USE ENV FOR LOCALHOST
-    const data = await getFetch("http://localhost:4000/api/v1/blogs",config);
+    const data = await getFetch("http://localhost:4000/api/v1/blogs", config);
     setBlogs(data);
     setFilteredBlogs(data);
   };
 
   useEffect(() => {
-    if(user){
+    if (user) {
       const config = {
-        headers : {'Authorization' : 'Bearer ' + user.token} 
+        headers: { 'Authorization': 'Bearer ' + user.token }
       }
       fetchBlogs(config);
     }
-  }, [user,trigger]);
+  }, [user, trigger]);
 
   useEffect(() => {
-    if(!user){
+    if (!user) {
       setBlogs(null);
     }
-  },[user])
+  }, [user])
 
   return (
     <div align="center">
@@ -132,7 +132,7 @@ const Blogs = () => {
         </section>
         <hr />
         <div className="columns is-multiline">
-          {blogs && 
+          {blogs &&
             filteredBlogs.map((blog) => {
               return (
                 <div
@@ -140,7 +140,7 @@ const Blogs = () => {
                   key={blog._id}
                   style={{ fontFamily: "cursive" }}
                 >
-                  <div className="card" style={{"minHeight":"30rem", "maxHeight":"50rem"}} card-shadow="1em" >
+                  <div className="card" style={{ "minHeight": "30rem", "maxHeight": "50rem" }} card-shadow="1em" >
                     <div className="card-content">
                       <BlogPost
                         blog={blog}
@@ -154,15 +154,15 @@ const Blogs = () => {
             })}
           {!blogs && (
             <section className="section is-small">
-            <div className="columns">
-              <div className="content is-medium">
-                <div className="notification is-warning is-light" style={{ fontStyle: "italic" }}>
-                  The data could not be loaded. Please wait. Please Login or sign up If you haven't already.
-                  If the response is taking too long, please check your connection
+              <div className="columns">
+                <div className="content is-medium">
+                  <div className="notification is-warning is-light" style={{ fontStyle: "italic" }}>
+                    The data could not be loaded. Please wait. Please Login or sign up If you haven't already.
+                    If the response is taking too long, please check your connection
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
           )}
         </div>
       </div>
