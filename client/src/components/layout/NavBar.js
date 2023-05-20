@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { useLogout } from "../../hooks/useLogout";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 
 const NavBar = () => {
 
     //Hooks
     const { logout } = useLogout();
+    const { user } = useAuthContext();
     //Handlers
     const handleClick = () => {
         logout();
@@ -26,9 +28,16 @@ const NavBar = () => {
                         <div className="navbar-end">
                             <div className="tabs is-right">
                                 <ul>
-                                    <Link to="/signup" className="button is-primary is-outlined mr-2" style={{ "fontFamily": "cursive" }}> Sign Up  </Link>
-                                    <Link to="/login" className="button is-secondary is-outlined mr-2" style={{ "fontFamily": "cursive" }} > Login  </Link>
-                                    <button className="button is-primary is-outlined " style={{ "fontFamily": "cursive" }} onClick={handleClick}>  Logout  </button>
+                                    {user && (
+                                        <button className="button is-primary is-outlined " style={{ "fontFamily": "cursive" }} onClick={handleClick}>  Logout  </button>
+                                    )}
+
+                                    {!user && (
+                                        <>
+                                            <Link to="/signup" className="button is-primary is-outlined mr-2" style={{ "fontFamily": "cursive" }}> Sign Up  </Link>
+                                            <Link to="/login" className="button is-secondary is-outlined mr-2" style={{ "fontFamily": "cursive" }} > Login  </Link>
+                                        </>
+                                    )}
                                 </ul>
                             </div>
                         </div>
