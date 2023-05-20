@@ -17,8 +17,8 @@ const NavBar = () => {
                         <div className="navbar-end">
                             <div className="tabs is-right">
                                 <ul>
-                                    <a className="button is-primary is-outlined mr-2" href="/" style={{"fontFamily":"cursive"}}> Sign Up  </a>
-                                    <a className="button is-secondary is-outlined " href="/" style={{"fontFamily":"cursive"}} > Login  </a>
+                                    <Link to="/signup" className="button is-primary is-outlined mr-2" style={{"fontFamily":"cursive"}}> Sign Up  </Link>
+                                    <Link to="/login" className="button is-secondary is-outlined "  style={{"fontFamily":"cursive"}} > Login  </Link>
                                 </ul>
                             </div>
                         </div>
