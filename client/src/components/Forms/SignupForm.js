@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function SignupForm({  setEmail, setPassword , save}) {
+export default function SignupForm({ setEmail, setPassword, save, error, isLoading }) {
+
     /**
      * Handles the email
      * @param {*} e 
@@ -54,11 +55,13 @@ export default function SignupForm({  setEmail, setPassword , save}) {
                 <div className="field-label"></div>
                 <div className="field-body">
                     <div className="field">
+
                         <div className="control">
                             <button
                                 className="button is-link"
-                                onClick={save}
+                                onClick={() => save()}
                                 type="submit"
+                                disabled={isLoading}
                             >
                                 Sign Up
                             </button>
@@ -66,6 +69,13 @@ export default function SignupForm({  setEmail, setPassword , save}) {
                     </div>
                 </div>
             </div>
+            {error && (
+                <section className='section is-small'>
+                    <div className="notification is-danger is-light" style={{ fontFamily: "cursive" }}>
+                        {error}
+                    </div>
+                </section>
+            )}
         </section>
     )
 }
