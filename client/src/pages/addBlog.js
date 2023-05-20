@@ -9,10 +9,10 @@ const AddBlog = () => {
 
   const { user } = useAuthContext();
 
-  const save = async (title, writer, body, pictureName) => {
+  const save = async (title, body, pictureName) => {
     let newBlog = {
       title: title,
-      author: writer,
+      author: user.email,
       profilePicAddress: "http://localhost:4000/assets/" + pictureName,
       body: body,
     };

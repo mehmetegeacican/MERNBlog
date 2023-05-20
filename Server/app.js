@@ -24,8 +24,6 @@ const upload = multer({ storage: fileStorageEngine });
 
 //IMAGE UPLOAD API
 app.post("/uploads", upload.single("image"), (req, res) => {
-  console.log(req.body);
-  console.log("File Uploaded Successfully");
   res.send("File Upload success");
 });
 //STATIC FILE SERVING MIDDLEWARE
