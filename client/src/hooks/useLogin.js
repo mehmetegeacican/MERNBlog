@@ -2,16 +2,19 @@ import React from "react";
 import axios from "axios";
 import { useAuthContext } from "./useAuthContext";
 
-export const useSignUp = () => {
+export const useLogin = () => {
     const [error, setError] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(null);
     const { dispatch } = useAuthContext();
 
-    const signUp = async (email, password) => {
-        //Step 1 -- Set the Loading and Reset the Error
-        setError(null);
+    /**
+     * Login Function 
+     */
+    const login = async (email, password) => {
+        //Step 1 --> Start the Process 
         setIsLoading(true);
-        //Step 2 --> Send the Request
+        setError(null);
+        //Step 2 --> Request
         const config = {
             method: "POST",
             headers: { 'Content-type': 'application/json' }
@@ -20,14 +23,14 @@ export const useSignUp = () => {
             email: email,
             password: password
         });
-        const response = await axios.post('http://localhost:4000/api/v2/users/signup', data, config).catch((err) => {
+        const response = await axios.post('http://localhost:4000/api/v2/users/login', data, config).catch((err) => {
             setError(err.response.data.error);
             setIsLoading(false);
         });
         //Step 3 --> Receive
         const json = await response.data;
-        //Step 4 --> Check -- Handle Errors
-        if (response.status === 201) {
+        //Step 4 --> Adjust the Context data
+        if (response.status === 200) {
             //Save the user to Local Storage
             localStorage.setItem('user', JSON.stringify(json));
             //Update the Auth Context
@@ -36,5 +39,6 @@ export const useSignUp = () => {
         }
     }
 
-    return { signUp, isLoading, error };
-} 
+    //Return
+    return { login, error, isLoading };
+}
