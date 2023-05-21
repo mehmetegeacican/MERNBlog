@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
  * GETS ALL DOCS FROM THE DB
  */
 const getBlogs = async (req, res) => {
-  const blogs = await Blogs.find({}).sort({ createdAt: -1 });
+  const user_id = req.user._id;
+  const blogs = await Blogs.find({user_id}).sort({ createdAt: -1 });
   return res.status(200).json(blogs);
 };
 /**
@@ -32,13 +33,14 @@ const getABlog = async (req, res) => {
 const postBlog = async (req, res) => {
   const { title, author, profilePicAddress, body } = req.body;
   try {
+    const user_id = req.user._id;
     const blogM = await Blogs.create({
       title,
       author,
       profilePicAddress,
       body,
+      user_id
     });
-    console.log(blogM);
     return res.status(200).json(blogM);
   } catch (err) {
     return res.status(400).json({ err: err.message });
