@@ -22,12 +22,16 @@ jobs:
       with:
         node-version: '14'
 
+    - name: Change directory to Server
+      run: cd ./Server
+
     - name: Install dependencies
       run: npm install
 
     - name: Build backend
       run: npm run build
 
-    - name: Run backend tests
+    - name: Run custom backend tests
       run: npm run test
+
 
