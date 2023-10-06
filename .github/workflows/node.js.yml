@@ -20,8 +20,8 @@ jobs:
     - name: View directory to Server
       run: ls
       
-    - name: Change Directory
-      run: cd Server
+    - name: Change directory to Server
+      run: cd MERNBlog/Server
 
     - name: View directory to Server specifically
       run: ls
