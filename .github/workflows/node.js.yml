@@ -17,13 +17,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Change directory to Server
+      run: cd Server
+
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '14'
-
-    - name: Change directory to Server
-      run: cd ./Server
 
     - name: Install dependencies
       run: npm install
@@ -33,5 +33,6 @@ jobs:
 
     - name: Run custom backend tests
       run: npm run test
+
 
 
