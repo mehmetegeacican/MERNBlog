@@ -10,6 +10,10 @@ const getBlogs = async (req, res) => {
   return res.status(200).json(blogs);
 };
 
+
+
+
+
 /**
  * GET A SPECIFIC BLOG
  */
