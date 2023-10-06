@@ -21,7 +21,7 @@ jobs:
       run: ls
       
     - name: Change directory to Server
-      run: cd MERNBlog/Server
+      run: cd ./Server
 
     - name: View directory to Server specifically
       run: ls
