@@ -9,6 +9,7 @@ const getBlogs = async (req, res) => {
   const blogs = await Blogs.find({user_id}).sort({ createdAt: -1 });
   return res.status(200).json(blogs);
 };
+
 /**
  * GET A SPECIFIC BLOG
  */
