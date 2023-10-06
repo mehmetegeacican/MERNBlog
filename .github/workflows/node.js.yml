@@ -17,8 +17,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Change directory to Server
-      run: cd ../Server
+    - name: View directory to Server
+      run: ls
+      
+    - name: Change Directory
+      run: cd Server
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
