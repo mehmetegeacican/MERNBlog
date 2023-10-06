@@ -23,7 +23,7 @@ jobs:
     - name: Change Directory
       run: cd Server
 
-    - name: View directory to Server
+    - name: View directory to Server specifically
       run: ls
 
     - name: Set up Node.js
