@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getFetch } from "../services/requestServices";
 import { useAuthContext } from "../hooks/useAuthContext";
+import ReactMarkdown from 'react-markdown';
 
 const BlogDetails = () => {
   //USE PARAMS
@@ -62,8 +63,7 @@ const BlogDetails = () => {
                       {date.getDay()}/{date.getMonth()}/{date.getFullYear()}{" "}
                       {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}
                     </h2>
-                    <h1 className="title">{data.title}</h1>
-                    <p>{data.body}</p>
+                    <ReactMarkdown children={data.body} />
                     <br />
                     <p
                       className="button is-link is-outlined"
