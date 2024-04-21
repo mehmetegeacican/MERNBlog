@@ -63,7 +63,6 @@ const BlogDetails = () => {
                       {date.getDay()}/{date.getMonth()}/{date.getFullYear()}{" "}
                       {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}
                     </h2>
-                    <h1 className="title">{data.title}</h1>
                     <ReactMarkdown children={data.body} />
                     <br />
                     <p
