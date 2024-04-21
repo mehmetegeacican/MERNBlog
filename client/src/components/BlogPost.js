@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 const BlogPost = (props) => {
   const detailLink = "/" + props.blog._id;
   let date = new Date(props.blog.createdAt);
+  const day = date.getDate();
+  const month = date.getMonth() + 1; // Month is zero-based, so adding 1
+  const year = date.getFullYear();
 
   return (
     <article className="columns is-multiline">
@@ -17,7 +20,7 @@ const BlogPost = (props) => {
       </div>
       <div className="column is-12 featured-content ">
         <h3 className="heading post-category">
-          {date.getDay()}/{date.getMonth()}/{date.getFullYear()} {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}</h3>
+          {day}-{month}-{year}/{date.getHours()}:{date.getMinutes()}:{date.getSeconds()}</h3>
 
         <h1 className="title post-title" style={{ color: "darkred" }}>
           {props.blog.title}
