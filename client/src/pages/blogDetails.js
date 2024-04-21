@@ -12,6 +12,9 @@ const BlogDetails = () => {
   let [image, setImage] = useState("https://picsum.photos/800/600/?random");
   const { user } = useAuthContext();
   let date = new Date(data.createdAt);
+  const day = date.getDate();
+  const month = date.getMonth() + 1; // Month is zero-based, so adding 1
+  const year = date.getFullYear();
   //DATA FETCH
   const fetchBlog = async (config) => {
     const fetched = await getFetch(
@@ -60,7 +63,7 @@ const BlogDetails = () => {
                 <div className="column is-8 is-offset-2">
                   <div className="content is-medium">
                     <h2 className="subtitle is-4">
-                      {date.getDay()}/{date.getMonth()}/{date.getFullYear()}{" "}
+                      {day}-{month}-{year + " "}
                       {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}
                     </h2>
                     <ReactMarkdown children={data.body} />
