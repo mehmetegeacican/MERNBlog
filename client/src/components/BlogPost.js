@@ -13,9 +13,10 @@ const BlogPost = (props) => {
         <img
           src={props.blog.profilePicAddress}
           alt="blog-post"
-          style={{ borderRadius: "4.5rem" }}
+          style={{ borderRadius: "4.5rem", height:'11em'}}
           width="250rem"
-          height="250rem"
+          height="300rem"
+          
         />
       </div>
       <div className="column is-12 featured-content ">
