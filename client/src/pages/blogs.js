@@ -138,9 +138,9 @@ const Blogs = () => {
                 <div
                   className="column is-one-third"
                   key={blog._id}
-                  style={{ fontFamily: "cursive" }}
+                  style={{ fontFamily: "cursive"}}
                 >
-                  <div className="card" style={{ "minHeight": "30rem", "maxHeight": "50rem" }} card-shadow="1em" >
+                  <div className="card" style={{ "minHeight": "30rem", "maxHeight": "50rem" , backgroundColor:'#f5f5f5'}} card-shadow="1em" >
                     <div className="card-content">
                       <BlogPost
                         blog={blog}
