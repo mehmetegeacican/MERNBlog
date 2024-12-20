@@ -28,11 +28,11 @@ jobs:
     # Update Packages BE
     - name: Update Packages Backend
       working-directory: ./Server
-      run: npm audit fix
+      run: npm audit fix --force
 
     - name: Update Packages Frontend
       working-directory: ./client
-      run: npm audit fix
+      run: npm audit fix --force
     
   test:
     runs-on: ubuntu-latest
