@@ -1,0 +1,36 @@
+name: CI
+
+# Trigger the workflow on push or pull request to the main branch
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository code
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Set up Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # specify the version of Node.js to use
+
+    # Install backend dependencies
+    - name: Install backend dependencies
+      working-directory: ./Server
+      run: npm install
+
+    # Run backend tests
+    - name: Run backend tests
+      working-directory: ./Server
+      run: npm run test
+
+    # Install frontend dependencies
+    - name: Install frontend dependencies
+      working-directory: ./client
+      run: npm install
