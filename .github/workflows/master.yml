@@ -47,14 +47,12 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14' # specify the version of Node.js to use
-    #
-    - name: Check for Env Var
-      env: 
-          MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
-      working-directory: ./Server
-      run: |
-          echo "MONGO_URI_STRING is $MONGO_URI_STRING"
-          node -e "console.log('From Node:', process.env.MONGO_URI_STRING)"
+    # Env Checking ---
+    - name: Check Environment
+      run: env | grep MY_ENV_VAR
+      env:
+        MY_ENV_VAR: ${{ secrets.MY_ENV_VAR }}
+
 
     # Install backend dependencies
     - name: Install backend dependencies
