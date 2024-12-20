@@ -70,4 +70,6 @@ jobs:
     - name: Run backend tests
       working-directory: ./Server
       run: npm run test
+      env:
+          MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
 
