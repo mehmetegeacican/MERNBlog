@@ -58,11 +58,6 @@ jobs:
     - name: Install backend dependencies
       working-directory: ./Server
       run: echo npm install
-
-    # Install dotenv
-    - name: Install backend dependencies
-      working-directory: ./Server
-      run: echo npm install dotenv
       
     # GET RUNNER IP Address
     - name: Get runner IP
