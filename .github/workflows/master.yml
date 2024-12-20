@@ -1,0 +1,69 @@
+name: CT
+
+# Trigger the workflow on pull request to the main branch
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout the repository code
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Set up Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # specify the version of Node.js to use
+
+    # Install backend dependencies
+    - name: Install backend dependencies
+      working-directory: ./Server
+      run: npm install
+
+    # Update Packages BE
+    - name: Update Packages Backend
+      working-directory: ./Server
+      run: npm audit fix
+
+    - name: Update Packages Frontend
+      working-directory: ./client
+      run: npm audit fix
+    
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository code
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Set up Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # specify the version of Node.js to use
+
+    # Install backend dependencies
+    - name: Install backend dependencies
+      working-directory: ./Server
+      run: npm install
+      
+    # GET RUNNER IP Address
+    - name: Get runner IP
+      id: get_ip
+      run: |
+        echo "Fetching runner's public IP address..."
+        curl http://checkip.amazonaws.com
+      
+    # Run backend tests
+    # - name: Run backend tests
+      #working-directory: ./Server
+      #env:
+        #MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
+      #run: npm run test
+
