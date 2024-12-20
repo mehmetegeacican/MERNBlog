@@ -59,6 +59,14 @@ jobs:
       run: |
         echo "Fetching runner's public IP address..."
         curl http://checkip.amazonaws.com
+        
+    # Print a partial version of the secret
+    - name: Print masked secret
+      run: |
+        echo "The MONGO_URI_STRING secret is set."
+        echo "Masked version: ${MONGO_URI_STRING}******"
+      env:
+        MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
       
     # Run backend tests
     # - name: Run backend tests
