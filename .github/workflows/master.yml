@@ -64,7 +64,7 @@ jobs:
     - name: Print masked secret
       run: |
         echo "The MONGO_URI_STRING secret is set."
-        echo "Masked version: ${MONGO_URI_STRING}******"
+        echo "Masked version: ${MONGO_URI_STRING::5}******"
       env:
         MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
       
