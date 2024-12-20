@@ -53,7 +53,7 @@ jobs:
           MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
       working-directory: ./Server
       run: |
-          echo "MY_ENV_VAR is $MY_ENV_VAR"
+          echo "MONGO_URI_STRING is $MONGO_URI_STRING"
           node -e "console.log('From Node:', process.env.MONGO_URI_STRING)"
 
     # Install backend dependencies
