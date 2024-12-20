@@ -11,7 +11,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
      */
     beforeAll(async () => {
         try {
-            await connectMongo("mongodb+srv://mernblogadmin:mernblog@mernblog.syofdf7.mongodb.net/?retryWrites=true&w=majority");
+            await connectMongo(String("mongodb+srv://mernblogadmin:mernblog@mernblog.syofdf7.mongodb.net/?retryWrites=true&w=majority"));
             console.log("DB Connectin for test is successful");
         } catch (err) {
             console.log(err);

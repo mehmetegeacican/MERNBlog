@@ -16,7 +16,7 @@ describe("TESTS FOR BLOG API ENDPOINTS", () => {
    */
   beforeAll(async () => {
     try {
-      await connectMongo("mongodb+srv://mernblogadmin:mernblog@mernblog.syofdf7.mongodb.net/?retryWrites=true&w=majority");
+      await connectMongo(String("mongodb+srv://mernblogadmin:mernblog@mernblog.syofdf7.mongodb.net/?retryWrites=true&w=majority"));
       const res = await req.post("/api/v2/users/signup").send({
         email: "testuser@email.com",
         password: "test123abcABC!"
