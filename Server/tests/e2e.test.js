@@ -16,6 +16,7 @@ describe("TESTS FOR BLOG API ENDPOINTS", () => {
    */
   beforeAll(async () => {
     try {
+      console.log("Creating a temporary user and loggin in ," ,process.env.MONGO_URI_STRING);
       await connectMongo(String(process.env.MONGO_URI_STRING));
       const res = await req.post("/api/v2/users/signup").send({
         email: "testuser@email.com",
