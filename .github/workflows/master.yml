@@ -1,6 +1,6 @@
-name: CI
+name: CT
 
-# Trigger the workflow on push or pull request to the main branch
+# Trigger the workflow on pull request to the main branch
 on:
   pull_request:
     branches: [ master ]
@@ -24,6 +24,13 @@ jobs:
     - name: Install backend dependencies
       working-directory: ./Server
       run: npm install
+      
+    # GET RUNNER IP Address
+    - name: Get runner IP
+      id: get_ip
+      run: |
+        echo "Fetching runner's public IP address..."
+        curl http://checkip.amazonaws.com
       
     # Run backend tests
     - name: Run backend tests
