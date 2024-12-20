@@ -61,17 +61,13 @@ jobs:
         curl http://checkip.amazonaws.com
         
     # Print a partial version of the secret
-    - name: Print masked secret
+    - name: Create .env file
       run: |
-        echo "The MONGO_URI_STRING secret is set."
-        echo "Masked version: ${MONGO_URI_STRING::5}******"
-      env:
-        MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
+        touch .env
+        echo MONGO_URI = ${{ secrets.MONGO_URI_STRING }} >> .env
       
     # Run backend tests
     - name: Run backend tests
       working-directory: ./Server
-      env:
-        MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
       run: npm run test
 
