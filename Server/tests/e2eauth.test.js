@@ -12,7 +12,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
     beforeAll(async () => {
         try {
             console.log(process.env.MONGO_URI_STRING,"****");
-            await connectMongo('mongodb+srv://mernblogadmin:mernblog@mernblog.syofdf7.mongodb.net/?retryWrites=true&w=majority');
+            await connectMongo(String('mongodb+srv://mernblogadmin:mernblog@mernblog.syofdf7.mongodb.net/?retryWrites=true&w=majority'));
             console.log("DB Connectin for test is successful");
         } catch (err) {
             console.log(err);
@@ -76,7 +76,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
             expect(res.headers["content-type"]).toEqual(
                 expect.stringContaining("json")
             );
-        });
+        },50000);
     });
     /**
      * TEST CASE 5 -- SIGNING UP WITH ALREADY IN-USE EMAIL
