@@ -55,6 +55,12 @@ jobs:
           MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
           SECRET: ${{ secrets.SECRET }}
 
+      # Set up environment variables
+      - name: Set up Environment Variables
+        run: |
+          echo "MONGO_URI_STRING=${{ secrets.MONGO_URI_STRING }}" >> $GITHUB_ENV
+          echo "SECRET=${{ secrets.SECRET }}" >> $GITHUB_ENV
+
       - name: List Environment Variables
         run: printenv
 
