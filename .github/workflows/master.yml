@@ -1,4 +1,4 @@
-name: CT
+name: CI/CD
 
 # Trigger the workflow on pull request to the master branch
 on:
