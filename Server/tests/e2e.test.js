@@ -22,6 +22,7 @@ describe("TESTS FOR BLOG API ENDPOINTS", () => {
         email: "testuser@email.com",
         password: "test123abcABC!"
       });
+      console.log('Response body:', res.body);
       token = res.body.token;
       console.log('SECRET is:', process.env.SECRET || 'Not Found');
       console.log("Token is ", token);
