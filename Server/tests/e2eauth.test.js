@@ -11,6 +11,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
      */
     beforeAll(async () => {
         try {
+            console.log(process.env.MONGO_URI_STRING,"****")
             await connectMongo(String(process.env.MONGO_URI_STRING));
             console.log("DB Connectin for test is successful");
         } catch (err) {
