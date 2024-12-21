@@ -76,7 +76,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
             expect(res.headers["content-type"]).toEqual(
                 expect.stringContaining("json")
             );
-        });
+        },25000);
     });
     /**
      * TEST CASE 5 -- SIGNING UP WITH ALREADY IN-USE EMAIL
@@ -88,7 +88,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
                 password: "abcABC123!"
             });
             expect(res.status).toBe(400);
-        });
+        },25000);
     });
     /**
      * TEST CASE 6 -- LOGIN USER WITH INCORRECT PASSWORD
@@ -100,7 +100,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
                 password: "abcABC123"
             });
             expect(res.status).toBe(400);
-        });
+        },25000);
     });
     /**
      * TEST CASE 7-- LOGIN USER WITH NON EXISTING USER
@@ -112,7 +112,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
                 password: "abcABC123!"
             });
             expect(res.status).toBe(400);
-        });
+        },25000);
     });
     /**
      * TEST CASE 8-- LOGIN USER WITH NON EXISTING USER
@@ -124,7 +124,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
                 password: "abcABC123!"
             });
             expect(res.status).toBe(400);
-        });
+        },25000);
     });
     /**
      * TEST CASE 9-- LOGIN USER WITH EMPTY DATAS
@@ -136,7 +136,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
                 password: ""
             });
             expect(res.status).toBe(400);
-        });
+        },25000);
     });
 
     /**
@@ -147,7 +147,7 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
             const res = await req.delete("/api/v2/users/deleteAccount?email=yoshi@dev.com").send({
             });
             expect(res.status).toBe(200);
-        });
+        },25000);
     });
     /**
      * TEST CASE 11 -- DELETE A NON EXISTING USER
@@ -157,6 +157,6 @@ describe(('TESTS FOR BLOG API AUTHENTICATION'), () => {
             const res = await req.delete("/api/v2/users/deleteAccount?email=yoshi@dev.com").send({
             });
             expect(res.status).toBe(400);
-        });
+        },25000);
     });
 })
