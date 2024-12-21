@@ -58,4 +58,5 @@ jobs:
         working-directory: ./Server
         env:
           MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
+          SECRET: ${{ secrets.SECRET }}
         run: npm run test
