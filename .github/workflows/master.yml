@@ -1,13 +1,12 @@
 name: CT
 
-# Trigger the workflow on pull request to the main branch
+# Trigger the workflow on pull request to the master branch
 on:
   pull_request:
     branches: [ master ]
 
 permissions:
   contents: read
-  secrets: read
 
 jobs:
   ci:
@@ -49,11 +48,11 @@ jobs:
         working-directory: ./Server
         run: npm install
 
-      - name: Debug Environment Variables
+      - name: Debug Secrets
         working-directory: ./Server
         env:
           MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
-        run: echo "MONGO_URI_STRING is $MONGO_URI_STRING"
+        run: echo "MONGO_URI_STRING=${{ secrets.MONGO_URI_STRING }}"
 
       - name: Run backend tests
         working-directory: ./Server
