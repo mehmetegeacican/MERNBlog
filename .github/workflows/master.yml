@@ -1,69 +1,73 @@
-name: CT
+name: CI/CD
 
-# Trigger the workflow on pull request to the main branch
+# Trigger the workflow on pull request to the master branch
 on:
   pull_request:
     branches: [ master ]
 
-jobs:
+permissions:
+  contents: read
 
+jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-    # Checkout the repository code
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    # Set up Node.js environment
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14' # specify the version of Node.js to use
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-    # Install backend dependencies
-    - name: Install backend dependencies
-      working-directory: ./Server
-      run: npm install
+      - name: Install backend dependencies
+        working-directory: ./Server
+        run: npm install
 
-    # Update Packages BE
-    - name: Update Packages Backend
-      working-directory: ./Server
-      run: npm audit fix --force
+      - name: Update Packages Backend
+        working-directory: ./Server
+        run: npm audit fix --force
 
-    - name: Update Packages Frontend
-      working-directory: ./client
-      run: npm audit fix --force
-    
-  test:
+      - name: Update Packages Frontend
+        working-directory: ./client
+        run: npm audit fix --force
+
+  ct:
     runs-on: ubuntu-latest
-
     steps:
-    # Checkout the repository code
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    # Set up Node.js environment
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14' # specify the version of Node.js to use
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-    # Install backend dependencies
-    - name: Install backend dependencies
-      working-directory: ./Server
-      run: npm install
-      
-    # GET RUNNER IP Address
-    - name: Get runner IP
-      id: get_ip
-      run: |
-        echo "Fetching runner's public IP address..."
-        curl http://checkip.amazonaws.com
-      
-    # Run backend tests
-    # - name: Run backend tests
-      #working-directory: ./Server
-      #env:
-        #MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
-      #run: npm run test
+      - name: Install backend dependencies
+        working-directory: ./Server
+        run: npm install
 
+      - name: Debug Environment Variables
+        run: |
+          echo "MONGO_URI_STRING=$MONGO_URI_STRING"
+          echo "SECRET=$SECRET"
+        env:
+          MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
+          SECRET: ${{ secrets.SECRET }}
+
+      # Set up environment variables
+      - name: Set up Environment Variables
+        run: |
+          echo "MONGO_URI_STRING=${{ secrets.MONGO_URI_STRING }}" >> $GITHUB_ENV
+          echo "SECRET=${{ secrets.SECRET }}" >> $GITHUB_ENV
+          echo "Mongo URI (masked): ${MONGO_URI_STRING:0:10}****"
+
+      - name: List Environment Variables
+        run: printenv
+
+      - name: Run backend tests
+        working-directory: ./Server
+        env:
+          MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
+          SECRET: ${{ secrets.SECRET }}
+        run: npm run test

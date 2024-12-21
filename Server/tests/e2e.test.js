@@ -17,12 +17,15 @@ describe("TESTS FOR BLOG API ENDPOINTS", () => {
   beforeAll(async () => {
     try {
       console.log("Creating a temporary user and loggin in ," ,process.env.MONGO_URI_STRING);
-      await connectMongo(String(process.env.MONGO_URI_STRING));
+      await connectMongo(process.env.MONGO_URI_STRING);
       const res = await req.post("/api/v2/users/signup").send({
         email: "testuser@email.com",
         password: "test123abcABC!"
       });
-      token = res._body.token;
+      console.log('Response body:', res.body);
+      token = res.body.token;
+      console.log('SECRET is:', process.env.SECRET || 'Not Found');
+      console.log("Token is ", token);
       console.log("Creating a temporary user and loggin in");
       console.log("DB Connectin for test is successful");
     } catch (err) {
