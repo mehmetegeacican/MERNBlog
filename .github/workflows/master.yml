@@ -52,18 +52,11 @@ jobs:
     - name: Install backend dependencies
       working-directory: ./Server
       run: npm install
-      
-    # GET RUNNER IP Address
-    - name: Get runner IP
-      id: get_ip
-      run: |
-        echo "Fetching runner's public IP address..."
-        curl http://checkip.amazonaws.com
-      
+            
     # Run backend tests
-    # - name: Run backend tests
-      #working-directory: ./Server
-      #env:
-        #MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
-      #run: npm run test
+    - name: Run backend tests
+      working-directory: ./Server
+      env:
+        MONGO_URI_STRING: ${{ secrets.MONGO_URI_STRING }}
+      run: npm run test
 
