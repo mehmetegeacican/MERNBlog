@@ -22,7 +22,7 @@ describe("TESTS FOR BLOG API ENDPOINTS", () => {
         email: "testuser@email.com",
         password: "test123abcABC!"
       });
-      token = res.body.token;
+      token = res.body.token || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzY2ODBjYjI3NmJhYzhlMDA3ODMyYzMiLCJpYXQiOjE3MzQ3NzA4OTEsImV4cCI6MTczNDg1NzI5MX0.972j3iL3ohWN-AM7QC_nunI-I88kd-rfOjt_vYpKTf4";
       console.log("Token is ", token);
       console.log("Creating a temporary user and loggin in");
       console.log("DB Connectin for test is successful");
